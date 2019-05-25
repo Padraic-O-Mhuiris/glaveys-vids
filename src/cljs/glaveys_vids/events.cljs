@@ -1,10 +1,10 @@
 (ns glaveys-vids.events
   (:require
-   [re-frame.core :as re-frame]
+   [re-frame.core :as rf]
    [glaveys-vids.db :as db]
    ))
 
-(re-frame/reg-event-db
+(rf/reg-event-db
  ::initialize-db
  (fn [_ _]
    db/default-db))

@@ -1,11 +1,11 @@
 (ns glaveys-vids.views
   (:require
-   [re-frame.core :as re-frame]
-   [glaveys-vids.subs :as subs]
+   [re-frame.core :as rf]
+   [glaveys-vids.subs :as s]
    ))
 
 (defn main-panel []
-  (let [name (re-frame/subscribe [::subs/name])]
+  (let [name (rf/subscribe [::s/name])]
     [:div
      [:h1 "Hello from " @name]
      ]))

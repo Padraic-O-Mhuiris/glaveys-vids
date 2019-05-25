@@ -1,24 +1,24 @@
 (ns glaveys-vids.core
   (:require
-   [reagent.core :as reagent]
-   [re-frame.core :as re-frame]
-   [glaveys-vids.events :as events]
-   [glaveys-vids.views :as views]
-   [glaveys-vids.config :as config]
+   [reagent.core :as r]
+   [re-frame.core :as rf]
+   [glaveys-vids.events :as e]
+   [glaveys-vids.views :as v]
+   [glaveys-vids.config :as c]
    ))
 
 
 (defn dev-setup []
-  (when config/debug?
+  (when c/debug?
     (enable-console-print!)
     (println "dev mode")))
 
 (defn mount-root []
-  (re-frame/clear-subscription-cache!)
-  (reagent/render [views/main-panel]
+  (rf/clear-subscription-cache!)
+  (r/render [v/main-panel]
                   (.getElementById js/document "app")))
 
 (defn ^:export init []
-  (re-frame/dispatch-sync [::events/initialize-db])
+  (rf/dispatch-sync [::e/initialize-db])
   (dev-setup)
   (mount-root))
